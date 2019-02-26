@@ -14,4 +14,10 @@ describe('taxi fee', function () {
         let money=calculate(distance,minute);
         expect(money).to.be.equal(11);
     });
+    it("the distance 10 km and the waiting time is 6 minute, the starting price is 15",function(){
+        let distance=10;
+        let minute=6;
+        let money=calculate(distance,minute);
+        expect(money).to.be.equal(15);
+    });   
 });
