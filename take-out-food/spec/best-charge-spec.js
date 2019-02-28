@@ -1,4 +1,3 @@
-
 describe('Take out food', function () {
 
   it('should generate best charge when best is 指定菜品半价', function() {

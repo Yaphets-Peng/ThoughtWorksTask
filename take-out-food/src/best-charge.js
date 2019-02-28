@@ -8,14 +8,13 @@ function bestCharge(selectedItems) {
   //从输入中获取到菜品ID和数量([{id:"ITEM0001 x 1",num:"1"}...])
   let details=getIdAndNums(selectedItems);
   let otherDetails=getDetailMessage(details,allItems);
+  let totalPrice=0
+  for(let i = 0; i < selectedItems.length; i++){
   //没优惠前的总价
-  let totalPrice=getTotalPrice(details,allItems);
-  console.log(totalPrice);
+   totalPrice+=(otherDetails[i].price)*(details[i].num);
+  }
   let preferentialPrice=getPreferentialPrice(details,promotions,totalPrice,allItems);
-  console.log(preferentialPrice);
   let result=print(details, otherDetails,totalPrice, preferentialPrice,allItems,promotions);
-  
-
   return result;
 }
 
@@ -46,22 +45,6 @@ function getDetailMessage(details,allItems){
       }
     }  
     return temp;
-}
-
-/**
- * 获取没优惠前的总价
-*/ 
-function getTotalPrice(details,allItems){
-  let summary=0;
-  for(var i=0;i<details.length;i++)
-    for(var j=0;j<allItems.length;j++)
-    {
-      if(allItems[j].id==details[i].id)
-      {
-        summary+=allItems[j].price*details[i].num;
-      }
-    }  
-    return summary;
 }
 
 /**
